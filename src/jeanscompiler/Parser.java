@@ -309,6 +309,34 @@ public class Parser {
             eat(Type.SEMICOLON);
             return new washDuckl();
         }
+        else if(look.type == Type.MEASURE){
+            eat(Type.MEASURE);
+            String form = "";
+            String name = "";
+            switch(look.type){
+                case JORT:
+                    form = "Int";
+                    eat(Type.JORT);
+                    name = look.text;
+                    eat(Type.IDENTIFIER);
+                    eat(Type.SEMICOLON);
+                    return new measureDuckl(form, name, "int");
+                case JEGGING:
+                    form = "Double";
+                    eat(Type.JEGGING);
+                    name = look.text;
+                    eat(Type.IDENTIFIER);
+                    eat(Type.SEMICOLON);
+                    return new measureDuckl(form, name, "double");
+                case JACKET:
+                    form = "Line";
+                    eat(Type.JACKET);
+                    name = look.text;
+                    eat(Type.IDENTIFIER);
+                    eat(Type.SEMICOLON);
+                    return new measureDuckl(form, name, "String");
+            }
+        }
 
         throw new RuntimeException("Unknown statement start: " + look);
     }

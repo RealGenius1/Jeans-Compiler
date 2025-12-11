@@ -15,8 +15,10 @@ public class JavaGenerator {
         StringBuilder out = new StringBuilder();
 
         out.append("package jeanscompiler;\n\n");
+        out.append("import java.util.Scanner;\n\n");
         out.append("public class Jeans {\n");
         out.append("  public static void main(String[] args) {\n");
+        out.append("    Scanner scan = new Scanner(System.in);\n");
 
         for (AST.Node n : program.statements) {
 
@@ -40,7 +42,8 @@ public class JavaGenerator {
                 out.append("     " + zd.name + "--;\n");
             } else if (n instanceof washDuckl wd) {
                 out.append("    System.gc();\n");
-
+            } else if (n instanceof measureDuckl md){
+                out.append("    " + md.type + " " + md.name + " = " + "scan.next" + md.form + "();\n");
             }
         }
             out.append("  }\n}\n");

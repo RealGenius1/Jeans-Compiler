@@ -74,6 +74,17 @@ public class AST {
 
     }
 
+    public static class measureDuckl implements Node{
+        public final String name;
+        public final String form;
+        public final String type;
+        public measureDuckl(String form, String name, String type){
+            this.name = name;
+            this.form = form;
+            this.type = type;
+        }
+    }
+
     public static class Assignment implements Node {
         public final String name;
         public final String value;
