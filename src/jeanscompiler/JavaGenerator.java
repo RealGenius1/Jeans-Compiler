@@ -2,11 +2,19 @@ package jeanscompiler;
 
 import jeanscompiler.AST.*;
 
+import javax.tools.JavaCompiler;
+import javax.tools.ToolProvider;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
+
 public class JavaGenerator {
 
-    public static String generate(Program program) {
+    public static String generate(Program program) throws IOException, InterruptedException {
         StringBuilder out = new StringBuilder();
 
+        out.append("package jeanscompiler;\n\n");
         out.append("public class Jeans {\n");
         out.append("  public static void main(String[] args) {\n");
 
@@ -38,6 +46,29 @@ public class JavaGenerator {
         }
 
         out.append("  }\n}\n");
+//        File file = new File("Jeans.java");
+        FileWriter writer = new FileWriter("C:\\Users\\sptho\\Downloads\\Github\\Jeans-Compiler\\src\\jeanscompiler\\Jeans.java");
+        writer.write(out.toString());
+        writer.close();
+
+        String srcPath = "src/jeanscompiler/Jeans.java";
+
+        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+        int result = compiler.run(null, null, null, srcPath);
+
+        if (result != 0) {
+            System.out.println("Compilation failed");
+        }
+
+        ProcessBuilder pb = new ProcessBuilder(
+                "java",
+                "-cp", "src",
+                "jeanscompiler.Jeans"
+        );
+
+        pb.inheritIO();
+        Process p = pb.start();
+        p.waitFor();
         return out.toString();
     }
 }

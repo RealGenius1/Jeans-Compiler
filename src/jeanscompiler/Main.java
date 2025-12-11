@@ -6,6 +6,10 @@ import java.lang.reflect.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import jeanscompiler.*;
+import javax.tools.JavaCompiler;
+import javax.tools.ToolProvider;
+
+
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -24,6 +28,11 @@ public class Main {
         // 5️⃣ (Optional) interpret or execute the AST
          JavaGenerator interpreter = new JavaGenerator();
          System.out.println(JavaGenerator.generate(program));
+
+
+
+
+
 
     }
 }
