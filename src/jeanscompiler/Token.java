@@ -1,4 +1,4 @@
-package src;
+package jeanscompiler;
 
 public class Token {
     public enum Type {
