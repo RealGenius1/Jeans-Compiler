@@ -7,7 +7,7 @@ public class JavaGenerator {
     public static String generate(Program program) {
         StringBuilder out = new StringBuilder();
 
-        out.append("public class LolProgram {\n");
+        out.append("public class Jeans {\n");
         out.append("  public static void main(String[] args) {\n");
 
         for (AST.Node n : program.statements) {
@@ -31,6 +31,9 @@ public class JavaGenerator {
             }
             else if (n instanceof JeggingDecl jd){
                 out.append("    double ").append(jd.name).append(" = " + jd.val + ";\n");
+            }
+            else if (n instanceof hatDuckl vd){
+                out.append("    boolean ").append(vd.name).append(" = " + vd.val + ";\n");
             }
         }
 

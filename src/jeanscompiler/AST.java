@@ -2,6 +2,9 @@ package jeanscompiler;
 
 import java.util.*;
 
+
+// TODO: RENAME ALL DECLs to DUCKLs
+
 public class AST {
     public interface Node {}
 
@@ -30,6 +33,15 @@ public class AST {
         public final String name;
         public final char val;
         public vestDecl(String name, char val){
+            this.name = name;
+            this.val = val;
+        }
+    }
+
+    public static class hatDuckl implements Node{
+        public final String name;
+        public final boolean val;
+        public hatDuckl(String name, boolean val){
             this.name = name;
             this.val = val;
         }

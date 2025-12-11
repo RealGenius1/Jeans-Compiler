@@ -12,8 +12,10 @@ public class Main {
         String source = new String(Files.readAllBytes(Paths.get("C:\\Users\\sptho\\Downloads\\Github\\Jeans-Compiler\\src\\jeanscompiler\\program.jeans")));
 
         // 2️⃣ Lex the source
+        System.out.println("Lexing");
         Lexer lexer = new Lexer(source);
 
+        System.out.println("Parsing");
         // 3️⃣ Parse into AST
         Parser parser = new Parser(lexer);
         AST.Program program = parser.parse(); // assuming parseProgram() returns the root AST

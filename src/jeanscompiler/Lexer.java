@@ -23,7 +23,10 @@ public class Lexer {
             Map.entry("catwalk", Type.CATWALK),
             Map.entry("everythingMustGo", Type.EVERYTHING_MUST_GO),
             Map.entry("advertise", Type.ADVERTISE),
-            Map.entry("pair", Type.PAIR)
+            Map.entry("pair", Type.PAIR),
+            Map.entry("hat", Type.HAT),
+            Map.entry("true", Type.TRUE),
+            Map.entry("false", Type.FALSE)
     );
 
     /**
@@ -86,6 +89,7 @@ public class Lexer {
 
         for (String key : KEYWORDS.keySet()) {
             if (input.startsWith(key, pos)) {
+                System.out.println(input.substring(pos, pos+key.length()));
                 pos += key.length();
                 return new Token(KEYWORDS.get(key), key);
             }

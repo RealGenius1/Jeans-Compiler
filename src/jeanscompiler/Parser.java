@@ -2,11 +2,12 @@ package jeanscompiler;
 
 import jeanscompiler.Token.Type;
 import jeanscompiler.AST.*;
+import java.util.Map;
 
 public class Parser {
     private final Lexer lexer;
     private Token look;
-
+    private SymbolTable st = new SymbolTable();
     public Parser(Lexer lexer) {
         this.lexer = lexer;
         this.look = lexer.next();
@@ -38,10 +39,82 @@ public class Parser {
             String name = look.text;
             eat(Type.IDENTIFIER);
             eat(Type.ASSIGNMENT_OPERATOR);
-            int value = Integer.parseInt(look.text);
-            eat(Type.INTEGER);
+            int val = 0;
+            switch (look.type) {
+                case INTEGER:
+                    val += Integer.parseInt(look.text);
+                    eat(Type.INTEGER);
+                    break;
+                case IDENTIFIER:
+                    val += (int) st.getVal(look.text);
+                    eat(Type.IDENTIFIER);
+                    break;
+            }
+            while(look.type != Type.SEMICOLON) {
+                switch (look.type) {
+                    case PLUS:
+                        eat(Type.PLUS);
+                        if(look.type == Type.INTEGER) {
+                            val += Integer.parseInt(look.text);
+                            eat(Type.INTEGER);
+                        }
+                        if(look.type == Type.IDENTIFIER) {
+                            val += (int) st.getVal(look.text);
+                            eat(Type.IDENTIFIER);
+                        }
+                        break;
+                    case MINUS:
+                        eat(Type.MINUS);
+                        if(look.type == Type.INTEGER) {
+                            val -= Integer.parseInt(look.text);
+                            eat(Type.INTEGER);
+                        }
+                        if(look.type == Type.IDENTIFIER) {
+                            val -= (int) st.getVal(look.text);
+                            eat(Type.IDENTIFIER);
+                        }
+                        break;
+                    case TIMES:
+                        eat(Type.TIMES);
+                        if(look.type == Type.INTEGER) {
+                            val *= Integer.parseInt(look.text);
+                            eat(Type.INTEGER);
+                        }
+                        if(look.type == Type.IDENTIFIER) {
+                            val *= (int) st.getVal(look.text);
+                            eat(Type.IDENTIFIER);
+                        }
+                        break;
+                    case DIVIDE:
+                        eat(Type.DIVIDE);
+                        if(look.type == Type.INTEGER) {
+                            val /= Integer.parseInt(look.text);
+                            eat(Type.INTEGER);
+                        }
+                        if(look.type == Type.IDENTIFIER) {
+                            val /= (int) st.getVal(look.text);
+                            eat(Type.IDENTIFIER);
+                        }
+                        break;
+                    case MODULO:
+                        eat(Type.MODULO);
+                        if(look.type == Type.INTEGER) {
+                            val %= Integer.parseInt(look.text);
+                            eat(Type.INTEGER);
+                        }
+                        if(look.type == Type.IDENTIFIER) {
+                            val %= (int) st.getVal(look.text);
+                            eat(Type.IDENTIFIER);
+                        }
+                        break;
+                }
+            }
+
+            //eat(Type.INTEGER);
             eat(Type.SEMICOLON);
-            return new JortDecl(name, value);
+            st.add(name, new SymbolTable.VariableSymbol("Integer", val));
+            st.printVal(name);
+            return new JortDecl(name, val);
         }
         if (look.type == Type.JACKET) {
             eat(Type.JACKET);                  // consume 'jacket' keyword
@@ -59,9 +132,79 @@ public class Parser {
             String name = look.text;
             eat(Type.IDENTIFIER);
             eat(Type.ASSIGNMENT_OPERATOR);
-            double val = Double.parseDouble(look.text);
-            eat(Type.DOUBLE);
+            double val = 0;
+            switch (look.type) {
+                case DOUBLE:
+                    val += Double.parseDouble(look.text);
+                    eat(Type.DOUBLE);
+                    break;
+                case IDENTIFIER:
+                    val += (double) st.getVal(look.text);
+                    eat(Type.IDENTIFIER);
+                    break;
+            }
+            while(look.type != Type.SEMICOLON) {
+                switch (look.type) {
+                    case PLUS:
+                        eat(Type.PLUS);
+                        if(look.type == Type.DOUBLE) {
+                            val += Double.parseDouble(look.text);
+                            eat(Type.DOUBLE);
+                        }
+                        if(look.type == Type.IDENTIFIER) {
+                            val += (double) st.getVal(look.text);
+                            eat(Type.IDENTIFIER);
+                        }
+                        break;
+                    case MINUS:
+                        eat(Type.MINUS);
+                        if(look.type == Type.DOUBLE) {
+                            val -= Double.parseDouble(look.text);
+                            eat(Type.DOUBLE);
+                        }
+                        if(look.type == Type.IDENTIFIER) {
+                            val -= (double) st.getVal(look.text);
+                            eat(Type.IDENTIFIER);
+                        }
+                        break;
+                    case TIMES:
+                        eat(Type.TIMES);
+                        if(look.type == Type.DOUBLE) {
+                            val *= Double.parseDouble(look.text);
+                            eat(Type.DOUBLE);
+                        }
+                        if(look.type == Type.IDENTIFIER) {
+                            val *= (double) st.getVal(look.text);
+                            eat(Type.IDENTIFIER);
+                        }
+                        break;
+                    case DIVIDE:
+                        eat(Type.DIVIDE);
+                        if(look.type == Type.DOUBLE) {
+                            val /= Double.parseDouble(look.text);
+                            eat(Type.DOUBLE);
+                        }
+                        if(look.type == Type.IDENTIFIER) {
+                            val /= (double) st.getVal(look.text);
+                            eat(Type.IDENTIFIER);
+                        }
+                        break;
+                    case MODULO:
+                        eat(Type.MODULO);
+                        if(look.type == Type.DOUBLE) {
+                            val %= Double.parseDouble(look.text);
+                            eat(Type.DOUBLE);
+                        }
+                        if(look.type == Type.IDENTIFIER) {
+                            val %= (double) st.getVal(look.text);
+                            eat(Type.IDENTIFIER);
+                        }
+                        break;
+                }
+            }
             eat(Type.SEMICOLON);
+            st.add(name, new SymbolTable.VariableSymbol("Double", val));
+            st.printVal(name);
             return new JeggingDecl(name, val);
         }
 
@@ -74,6 +217,24 @@ public class Parser {
             eat(Type.CHARACTER);
             eat(Type.SEMICOLON);
             return new vestDecl(name, c);
+        }
+
+        if(look.type == Type.HAT){
+            eat(Type.HAT);
+            String name = look.text;
+            eat(Type.IDENTIFIER);
+            eat(Type.ASSIGNMENT_OPERATOR);
+            boolean c;
+            if(look.type == Type.TRUE){
+                c = true;
+                eat(Type.TRUE);
+            } else {
+                c = false;
+                eat(Type.FALSE);
+            }
+//            eat(Type.BOOLEAN);
+            eat(Type.SEMICOLON);
+            return new hatDuckl(name, c);
         }
 
 
