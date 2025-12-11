@@ -8,27 +8,101 @@ public class Lexer {
     private int pos = 0;                    // This is the pointer to the char we are at
 
 //    This is a map of keywords and their corresponding Token Types
-    Map<String, Type> KEYWORDS = Map.ofEntries(
-            Map.entry("jacket", Type.JACKET),
-            Map.entry("vest", Type.VEST),
-            Map.entry("jegging", Type.JEGGING),
-            Map.entry("jort", Type.JORT),
-            Map.entry("sew", Type.SEW),
-            Map.entry("buttonUp", Type.BUTTON_UP),
-            Map.entry("buttonDown", Type.BUTTON_DOWN),
-            Map.entry("zipUp", Type.ZIP_UP),
-            Map.entry("zipDown", Type.ZIP_DOWN),
-            Map.entry("discount", Type.DISCOUNT),
-            Map.entry("design", Type.DESIGN),
-            Map.entry("catwalk", Type.CATWALK),
-            Map.entry("everythingMustGo", Type.EVERYTHING_MUST_GO),
-            Map.entry("advertise", Type.ADVERTISE),
-            Map.entry("pair", Type.PAIR),
-            Map.entry("hat", Type.HAT),
-            Map.entry("true", Type.TRUE),
-            Map.entry("false", Type.FALSE),
-            Map.entry("wash", Type.WASH)
-    );
+Map<String, Type> KEYWORDS = Map.ofEntries(
+        Map.entry("jacket", Type.JACKET),
+        Map.entry("jegging", Type.JEGGING),
+        Map.entry("vest", Type.VEST),
+        Map.entry("jort", Type.JORT),
+        Map.entry("hat", Type.HAT),
+
+        Map.entry("sew", Type.SEW),
+        Map.entry("buttonUp", Type.BUTTON_UP),
+        Map.entry("buttonDown", Type.BUTTON_DOWN),
+        Map.entry("zipUp", Type.ZIP_UP),
+        Map.entry("zipDown", Type.ZIP_DOWN),
+
+        Map.entry("discount", Type.DISCOUNT),
+        Map.entry("design", Type.DESIGN),
+        Map.entry("catwalk", Type.CATWALK),
+        Map.entry("everythingMustGo", Type.EVERYTHING_MUST_GO),
+        Map.entry("advertise", Type.ADVERTISE),
+        Map.entry("pair", Type.PAIR),
+
+        Map.entry("wash", Type.WASH),
+        Map.entry("pocket", Type.POCKET),
+        Map.entry("measure", Type.MEASURE),
+        Map.entry("loan", Type.LOAN),
+        Map.entry("bankrupt", Type.BANKRUPT),
+        Map.entry("stitch", Type.STITCH),
+        Map.entry("shipping", Type.SHIPPING),
+        Map.entry("liquidate", Type.LIQUIDATE),
+        Map.entry("budget", Type.BUDGET),
+        Map.entry("buy", Type.BUY),
+        Map.entry("sell", Type.SELL),
+        Map.entry("borrow", Type.BORROW),
+        Map.entry("order", Type.ORDER),
+        Map.entry("listing", Type.LISTING),
+
+        // Boolean literals
+        Map.entry("true", Type.TRUE),
+        Map.entry("false", Type.FALSE),
+
+        // Language keywords
+        Map.entry("if", Type.IF),
+        Map.entry("else", Type.ELSE),
+        Map.entry("lessThan", Type.LESS_THAN),
+        Map.entry("greaterThan", Type.GREATER_THAN),
+        Map.entry("list", Type.LIST),
+        Map.entry("denim", Type.DENIM),
+        Map.entry("wear", Type.WEAR),
+        Map.entry("hang", Type.HANG),
+        Map.entry("closet", Type.CLOSET),
+        Map.entry("outfit", Type.OUTFIT),
+        Map.entry("jog", Type.JOG),
+        Map.entry("until", Type.UNTIL),
+        Map.entry("tear", Type.TEAR),
+        Map.entry("hem", Type.HEM),
+        Map.entry("boring", Type.BORING),
+        Map.entry("jeansEmergency", Type.JEANS_EMERGENCY),
+        Map.entry("thrift", Type.THRIFT),
+        Map.entry("model", Type.MODEL),
+        Map.entry("and", Type.AND),
+        Map.entry("or", Type.OR),
+        Map.entry("nequal", Type.NEQUAL),
+        Map.entry("for", Type.FOR),
+        Map.entry("operaticJeanPhrases", Type.OPERATIC_JEAN_PHRASES),
+
+        // Misc token types
+        Map.entry("identifier", Type.IDENTIFIER),
+        Map.entry("string", Type.STRING),
+        Map.entry("integer", Type.INTEGER),
+        Map.entry("double", Type.DOUBLE),
+        Map.entry("plus", Type.PLUS),
+        Map.entry("minus", Type.MINUS),
+        Map.entry("times", Type.TIMES),
+        Map.entry("divide", Type.DIVIDE),
+        Map.entry("keyword", Type.KEYWORD),
+        Map.entry("invalid", Type.INVALID),
+
+        Map.entry("assign", Type.ASSIGNMENT_OPERATOR),
+        Map.entry("semicolon", Type.SEMICOLON),
+        Map.entry("dot", Type.DOT),
+        Map.entry("leftBrace", Type.LEFT_BRACE),
+        Map.entry("rightBrace", Type.RIGHT_BRACE),
+        Map.entry("lparen", Type.LPAREN),
+        Map.entry("rparen", Type.RPAREN),
+
+        Map.entry("print", Type.PRINT),
+        Map.entry("concat", Type.CONCAT),
+        Map.entry("new", Type.NEW),
+        Map.entry("character", Type.CHARACTER),
+        Map.entry("main", Type.MAIN),
+        Map.entry("closeQuote", Type.CLOSE_QUOTE),
+        Map.entry("modulo", Type.MODULO),
+        Map.entry("boolean", Type.BOOLEAN),
+
+        Map.entry("eof", Type.EOF)
+);
 
     /**
      * Function that returns the char at pointer without moving the pointer
