@@ -11,7 +11,19 @@ public class AST {
 
     public static class VarDecl implements Node {
         public final String name;
-        public VarDecl(String name) { this.name = name; }
+        public final int val;
+        public VarDecl(String name, int val) {
+            this.name = name;
+            this.val = val;
+        }
+    }
+    public static class strDecl implements Node{
+        public final String name;
+        public final String val;
+        public strDecl(String name, String val){
+            this.name = name;
+            this.val = val;
+        }
     }
 
     public static class Assignment implements Node {

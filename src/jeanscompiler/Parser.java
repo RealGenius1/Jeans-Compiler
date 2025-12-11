@@ -22,39 +22,65 @@ public class Parser {
     public Program parse() {
         Program program = new Program();
 
-        eat(Type.HAI);
+        eat(Type.CATWALK);
 
-        while (look.type != Type.KTHXBYE && look.type != Type.EOF) {
+        while (look.type != Type.EVERYTHING_MUST_GO && look.type != Type.EOF) {
             program.statements.add(statement());
         }
 
-        eat(Type.KTHXBYE);
+        eat(Type.EVERYTHING_MUST_GO);
 
         return program;
     }
 
     private Node statement() {
-        if (look.type == Type.I) {
-            eat(Type.I); eat(Type.HAS); eat(Type.A);
+        if (look.type == Type.JORT) {
+            eat(Type.JORT);
             String name = look.text;
-            eat(Type.IDENT);
-            return new VarDecl(name);
+            eat(Type.IDENTIFIER);
+            eat(Type.ASSIGNMENT_OPERATOR);
+            int value = Integer.parseInt(look.text);
+            eat(Type.INTEGER);
+
+            return new VarDecl(name, value);
+        }
+        if (look.type == Type.JACKET) {
+            eat(Type.JACKET);                  // consume 'jacket' keyword
+            String name = look.text;           // capture identifier name
+            eat(Type.IDENTIFIER);              // consume identifier
+            eat(Type.ASSIGNMENT_OPERATOR);     // consume '='
+            String value = look.text;
+            eat(Type.STRING);                  // consume string literal
+            return new strDecl(name, value);
         }
 
-        if (look.type == Type.IDENT) {
+
+        if (look.type == Type.IDENTIFIER) {
             String name = look.text;
-            eat(Type.IDENT);
-            eat(Type.R);
+            eat(Type.IDENTIFIER);
+            eat(Type.ASSIGNMENT_OPERATOR);
             String value = look.text;
-            eat(look.type == Type.NUMBER ? Type.NUMBER : Type.IDENT);
+            eat(look.type == Type.INTEGER ? Type.INTEGER : Type.IDENTIFIER);
             return new Assignment(name, value);
         }
 
-        if (look.type == Type.VISIBLE) {
-            eat(Type.VISIBLE);
+        if (look.type == Type.ADVERTISE) {
+            eat(Type.ADVERTISE);
+            eat(Type.LPAREN);
             String value = look.text;
-            eat(look.type == Type.IDENT || look.type == Type.NUMBER ? look.type : null);
+            eat(look.type == Type.IDENTIFIER || look.type == Type.INTEGER ? look.type : null);
+            eat(Type.RPAREN);
+            eat(Type.SEMICOLON);
             return new Print(value);
+        }
+
+        if(look.type == Type.SEW){
+            eat(Type.SEW);
+            return new Print("");
+        }
+        if(look.type == Type.SEMICOLON){
+            eat(Type.SEMICOLON);
+            return new Print("");
         }
 
         throw new RuntimeException("Unknown statement start: " + look);

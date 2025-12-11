@@ -1,0 +1,5 @@
+catwalk
+    sew jacket str = "Hello World";
+	sew jort x = 13;
+	advertise(str);
+everythingMustGo
