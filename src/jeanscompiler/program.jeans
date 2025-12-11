@@ -1,5 +1,7 @@
 catwalk
+    vest c = 's';
     jacket str = "Hello World";
 	jort x = 13;
+	jegging y = 1.2;
 	advertise(str);
 everythingMustGo

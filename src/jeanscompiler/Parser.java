@@ -65,6 +65,17 @@ public class Parser {
             return new JeggingDecl(name, val);
         }
 
+        if(look.type == Type.VEST){
+            eat(Type.VEST);
+            String name = look.text;
+            eat(Type.IDENTIFIER);
+            eat(Type.ASSIGNMENT_OPERATOR);
+            char c = look.text.charAt(0);
+            eat(Type.CHARACTER);
+            eat(Type.SEMICOLON);
+            return new vestDecl(name, c);
+        }
+
 
         if (look.type == Type.IDENTIFIER) {
             String name = look.text;

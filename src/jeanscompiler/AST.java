@@ -26,6 +26,15 @@ public class AST {
         }
     }
 
+    public static class vestDecl implements Node{
+        public final String name;
+        public final char val;
+        public vestDecl(String name, char val){
+            this.name = name;
+            this.val = val;
+        }
+    }
+
     public static class strDecl implements Node{
         public final String name;
         public final String val;

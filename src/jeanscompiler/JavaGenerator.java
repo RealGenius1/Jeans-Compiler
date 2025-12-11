@@ -26,6 +26,12 @@ public class JavaGenerator {
             else if (n instanceof strDecl sd){
                 out.append("    String ").append(sd.name).append(" = \"" + sd.val + "\";\n");
             }
+            else if (n instanceof vestDecl vd){
+                out.append("    char ").append(vd.name).append(" = '" + vd.val + "';\n");
+            }
+            else if (n instanceof JeggingDecl jd){
+                out.append("    double ").append(jd.name).append(" = " + jd.val + ";\n");
+            }
         }
 
         out.append("  }\n}\n");
