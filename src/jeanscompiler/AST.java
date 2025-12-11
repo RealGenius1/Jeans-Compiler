@@ -56,6 +56,24 @@ public class AST {
         }
     }
 
+    public static class zipUp implements Node{
+        public final String name;
+        public zipUp(String name){
+            this.name = name;
+        }
+    }
+
+    public static class zipDown implements Node{
+        public final String name;
+        public zipDown(String name){
+            this.name = name;
+        }
+    }
+
+    public static class washDuckl implements Node{
+
+    }
+
     public static class Assignment implements Node {
         public final String name;
         public final String value;

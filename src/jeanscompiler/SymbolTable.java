@@ -11,6 +11,12 @@ public class SymbolTable {
     {
         System.out.println("Var Name: " + n + " Var Type: " + sTable.get(n).getType() + " Var Value: " + sTable.get(n).getVal());
     }
+
+    public static void upVal(String n, Object val)
+    {
+        sTable.get(n).setVal(val);
+    }
+
     public static VariableSymbol get(String name)
     {
         return sTable.get(name);
@@ -36,6 +42,11 @@ public class SymbolTable {
             else {
                 throw new IllegalArgumentException("Value type does not match variable type");
             }
+        }
+
+        public void setVal(Object val)
+        {
+            this.val = val;
         }
 
         public String getType()

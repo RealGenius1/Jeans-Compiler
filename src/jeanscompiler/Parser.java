@@ -52,8 +52,8 @@ public class Parser {
             }
             while(look.type != Type.SEMICOLON) {
                 switch (look.type) {
-                    case PLUS:
-                        eat(Type.PLUS);
+                    case BUTTON_UP:
+                        eat(Type.BUTTON_UP);
                         if(look.type == Type.INTEGER) {
                             val += Integer.parseInt(look.text);
                             eat(Type.INTEGER);
@@ -63,8 +63,8 @@ public class Parser {
                             eat(Type.IDENTIFIER);
                         }
                         break;
-                    case MINUS:
-                        eat(Type.MINUS);
+                    case BUTTON_DOWN:
+                        eat(Type.BUTTON_DOWN);
                         if(look.type == Type.INTEGER) {
                             val -= Integer.parseInt(look.text);
                             eat(Type.INTEGER);
@@ -96,8 +96,8 @@ public class Parser {
                             eat(Type.IDENTIFIER);
                         }
                         break;
-                    case MODULO:
-                        eat(Type.MODULO);
+                    case DISCOUNT:
+                        eat(Type.DISCOUNT);
                         if(look.type == Type.INTEGER) {
                             val %= Integer.parseInt(look.text);
                             eat(Type.INTEGER);
@@ -144,8 +144,8 @@ public class Parser {
             }
             while(look.type != Type.SEMICOLON) {
                 switch (look.type) {
-                    case PLUS:
-                        eat(Type.PLUS);
+                    case BUTTON_UP:
+                        eat(Type.BUTTON_UP);
                         if(look.type == Type.DOUBLE) {
                             val += Double.parseDouble(look.text);
                             eat(Type.DOUBLE);
@@ -155,8 +155,8 @@ public class Parser {
                             eat(Type.IDENTIFIER);
                         }
                         break;
-                    case MINUS:
-                        eat(Type.MINUS);
+                    case BUTTON_DOWN:
+                        eat(Type.BUTTON_DOWN);
                         if(look.type == Type.DOUBLE) {
                             val -= Double.parseDouble(look.text);
                             eat(Type.DOUBLE);
@@ -188,8 +188,8 @@ public class Parser {
                             eat(Type.IDENTIFIER);
                         }
                         break;
-                    case MODULO:
-                        eat(Type.MODULO);
+                    case DISCOUNT:
+                        eat(Type.DISCOUNT);
                         if(look.type == Type.DOUBLE) {
                             val %= Double.parseDouble(look.text);
                             eat(Type.DOUBLE);
@@ -250,7 +250,7 @@ public class Parser {
             eat(Type.ADVERTISE);
             eat(Type.LPAREN);
             String value = look.text;
-            eat(look.type == Type.IDENTIFIER || look.type == Type.INTEGER ? look.type : null);
+            eat(look.type == Type.IDENTIFIER || look.type == Type.INTEGER  || look.type == Type.DOUBLE ? look.type : null);
             eat(Type.RPAREN);
             eat(Type.SEMICOLON);
             return new Print(value);
@@ -264,6 +264,51 @@ public class Parser {
 //            eat(Type.SEMICOLON);
 //            return new Print("");
 //        }
+        if(look.type == Type.ZIP_UP){
+            eat(Type.ZIP_UP);
+            String name = look.text;
+            eat(Type.IDENTIFIER);
+            String type = st.get(name).getType();
+            if(type == "Integer"){
+                int val = (int) st.getVal(name);
+                val++;
+                st.upVal(name, val);
+            } else if(type == "Double") {
+                double val = (double) st.getVal(name);
+                val++;
+                st.upVal(name, val);
+            } else {
+                throw new ArithmeticException("Cannot zip up a jacket");
+            }
+            eat(Type.SEMICOLON);
+            return new zipUp(name);
+
+        }
+
+        if(look.type == Type.ZIP_DOWN){
+            eat(Type.ZIP_DOWN);
+            String name = look.text;
+            eat(Type.IDENTIFIER);
+            String type = st.get(name).getType();
+            if(type == "Integer"){
+                int val = (int) st.getVal(name);
+                val--;
+                st.upVal(name, val);
+            } else if(type == "Double") {
+                double val = (double) st.getVal(name);
+                val--;
+                st.upVal(name, val);
+            } else {
+                throw new ArithmeticException("Cannot zip down a jacket");
+            }
+            eat(Type.SEMICOLON);
+            return new zipDown(name);
+        }
+        else if (look.type == Type.WASH){
+            eat(Type.WASH);
+            eat(Type.SEMICOLON);
+            return new washDuckl();
+        }
 
         throw new RuntimeException("Unknown statement start: " + look);
     }

@@ -26,7 +26,8 @@ public class Lexer {
             Map.entry("pair", Type.PAIR),
             Map.entry("hat", Type.HAT),
             Map.entry("true", Type.TRUE),
-            Map.entry("false", Type.FALSE)
+            Map.entry("false", Type.FALSE),
+            Map.entry("wash", Type.WASH)
     );
 
     /**

@@ -43,6 +43,15 @@ public class JavaGenerator {
             else if (n instanceof hatDuckl vd){
                 out.append("    boolean ").append(vd.name).append(" = " + vd.val + ";\n");
             }
+            else if (n instanceof zipUp zu){
+                out.append("     " + zu.name + "++;\n");
+            }
+            else if (n instanceof zipDown zd) {
+                out.append("     " + zd.name + "--;\n");
+            }
+            else if (n instanceof washDuckl wd){
+                out.append("    System.gc();\n");
+            
         }
 
         out.append("  }\n}\n");
@@ -69,6 +78,7 @@ public class JavaGenerator {
         pb.inheritIO();
         Process p = pb.start();
         p.waitFor();
+
         return out.toString();
     }
 }

@@ -5,9 +5,13 @@ public class Jeans {
     char c = 's';
     String str = "Hello World";
     int x = 13;
+     x++;
+    System.out.println(x);
     System.out.println(str);
     double z = 3.0;
-    double y = 5.0;
+     z--;
+    System.out.println(z);
     boolean io = true;
+     System.gc();
   }
 }
