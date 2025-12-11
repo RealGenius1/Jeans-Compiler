@@ -14,8 +14,10 @@ public class Parser {
     }
 
     private void eat(Type t) {
-        if (look.type != t)
+        if (look.type != t) {
+            System.out.println(look.text);
             throw new RuntimeException("Expected " + t + " got " + look.type);
+        }
         look = lexer.next();
     }
 
@@ -337,6 +339,24 @@ public class Parser {
                     return new measureDuckl(form, name, "String");
             }
         }
+        if(look.type == Type.UNTIL){
+            eat(Type.UNTIL);
+            eat(Type.LPAREN);
+            StringBuilder ex = new StringBuilder();
+            while(look.type != Type.RPAREN){
+                ex.append(look.text);
+                eat(look.type);
+            }
+            eat(Type.RPAREN);
+            eat(Type.LEFT_BRACE);
+            Program block = new Program();
+            while(look.type != Type.RIGHT_BRACE){
+                block.statements.add(statement());
+            }
+            eat(Type.RIGHT_BRACE);
+            return new whileDuckl(ex.toString(), block);
+        }
+
 
         throw new RuntimeException("Unknown statement start: " + look);
     }

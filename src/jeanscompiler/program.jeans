@@ -4,12 +4,8 @@ catwalk
 	jort x = 13;
 	zipUp x;
 	advertise(x);
-	advertise(str);
-	jegging z = 3.0;
-	zipDown z;
-	advertise(z);
-	hat io = true;
-	wash;
-	measure jort p;
-	advertise(p);
+	until (x != 1){
+	    advertise(x);
+	    zipDown x;
+	}
 everythingMustGo

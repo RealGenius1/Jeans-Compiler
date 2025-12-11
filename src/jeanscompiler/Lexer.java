@@ -68,7 +68,7 @@ Map<String, Type> KEYWORDS = Map.ofEntries(
         Map.entry("model", Type.MODEL),
         Map.entry("and", Type.AND),
         Map.entry("or", Type.OR),
-        Map.entry("nequal", Type.NEQUAL),
+        Map.entry("!=", Type.NEQUAL),
         Map.entry("for", Type.FOR),
         Map.entry("operaticJeanPhrases", Type.OPERATIC_JEAN_PHRASES),
 

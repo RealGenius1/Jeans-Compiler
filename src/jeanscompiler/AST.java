@@ -85,6 +85,15 @@ public class AST {
         }
     }
 
+    public static class whileDuckl implements Node{
+        public final String ex;
+        public final Program block;
+        public whileDuckl(String ex, Program block){
+            this.ex = ex;
+            this.block = block;
+        }
+    }
+
     public static class Assignment implements Node {
         public final String name;
         public final String value;
