@@ -23,7 +23,7 @@ public class Main {
 
         // 5️⃣ (Optional) interpret or execute the AST
          JavaGenerator interpreter = new JavaGenerator();
-         interpreter.generate(program);
+         System.out.println(JavaGenerator.generate(program));
 
     }
 }

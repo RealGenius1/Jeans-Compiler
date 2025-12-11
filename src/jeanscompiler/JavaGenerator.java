@@ -1,7 +1,6 @@
 package jeanscompiler;
 
 import jeanscompiler.AST.*;
-import java.io.*;
 
 public class JavaGenerator {
 
@@ -13,8 +12,8 @@ public class JavaGenerator {
 
         for (AST.Node n : program.statements) {
 
-            if (n instanceof VarDecl vd) {
-                out.append("    int ").append(vd.name).append(" = 0;\n");
+            if (n instanceof JortDecl vd) {
+                out.append("    int ").append(vd.name).append(" = " + vd.val + ";\n");
             }
 
             else if (n instanceof Assignment as) {
@@ -23,6 +22,9 @@ public class JavaGenerator {
 
             else if (n instanceof Print p) {
                 out.append("    System.out.println(").append(p.value).append(");\n");
+            }
+            else if (n instanceof strDecl sd){
+                out.append("    String ").append(sd.name).append(" = \"" + sd.val + "\";\n");
             }
         }
 

@@ -1,6 +1,5 @@
 package jeanscompiler;
 
-import java.util.*;
 import jeanscompiler.Token.Type;
 import jeanscompiler.AST.*;
 
@@ -41,8 +40,8 @@ public class Parser {
             eat(Type.ASSIGNMENT_OPERATOR);
             int value = Integer.parseInt(look.text);
             eat(Type.INTEGER);
-
-            return new VarDecl(name, value);
+            eat(Type.SEMICOLON);
+            return new JortDecl(name, value);
         }
         if (look.type == Type.JACKET) {
             eat(Type.JACKET);                  // consume 'jacket' keyword
@@ -50,8 +49,20 @@ public class Parser {
             eat(Type.IDENTIFIER);              // consume identifier
             eat(Type.ASSIGNMENT_OPERATOR);     // consume '='
             String value = look.text;
-            eat(Type.STRING);                  // consume string literal
+            eat(Type.STRING);
+            eat(Type.SEMICOLON);               // consume string literal
             return new strDecl(name, value);
+        }
+
+        if(look.type == Type.JEGGING){
+            eat(Type.JEGGING);
+            String name = look.text;
+            eat(Type.IDENTIFIER);
+            eat(Type.ASSIGNMENT_OPERATOR);
+            double val = Double.parseDouble(look.text);
+            eat(Type.DOUBLE);
+            eat(Type.SEMICOLON);
+            return new JeggingDecl(name, val);
         }
 
 
@@ -61,6 +72,7 @@ public class Parser {
             eat(Type.ASSIGNMENT_OPERATOR);
             String value = look.text;
             eat(look.type == Type.INTEGER ? Type.INTEGER : Type.IDENTIFIER);
+            eat(Type.SEMICOLON);
             return new Assignment(name, value);
         }
 
@@ -78,10 +90,10 @@ public class Parser {
             eat(Type.SEW);
             return new Print("");
         }
-        if(look.type == Type.SEMICOLON){
-            eat(Type.SEMICOLON);
-            return new Print("");
-        }
+//        if(look.type == Type.SEMICOLON){
+//            eat(Type.SEMICOLON);
+//            return new Print("");
+//        }
 
         throw new RuntimeException("Unknown statement start: " + look);
     }

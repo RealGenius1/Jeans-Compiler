@@ -9,14 +9,23 @@ public class AST {
         public final List<Node> statements = new ArrayList<>();
     }
 
-    public static class VarDecl implements Node {
+    public static class JortDecl implements Node {
         public final String name;
         public final int val;
-        public VarDecl(String name, int val) {
+        public JortDecl(String name, int val) {
             this.name = name;
             this.val = val;
         }
     }
+    public static class JeggingDecl implements Node {
+        public final String name;
+        public final double val;
+        public JeggingDecl(String name, double val){
+            this.name = name;
+            this.val = val;
+        }
+    }
+
     public static class strDecl implements Node{
         public final String name;
         public final String val;
