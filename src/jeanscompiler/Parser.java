@@ -113,7 +113,6 @@ public class Parser {
             //eat(Type.INTEGER);
             eat(Type.SEMICOLON);
             st.add(name, new SymbolTable.VariableSymbol("Integer", val));
-            st.printVal(name);
             return new JortDecl(name, val);
         }
         if (look.type == Type.JACKET) {
@@ -204,7 +203,6 @@ public class Parser {
             }
             eat(Type.SEMICOLON);
             st.add(name, new SymbolTable.VariableSymbol("Double", val));
-            st.printVal(name);
             return new JeggingDecl(name, val);
         }
 

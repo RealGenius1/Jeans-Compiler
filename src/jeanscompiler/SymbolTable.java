@@ -28,7 +28,6 @@ public class SymbolTable {
         public VariableSymbol(String type, Object val)
         {
             this.type = type;
-            System.out.println("Type: " + type + " Val: " + val.getClass().getSimpleName());
 
             if(val != null && val.getClass().getSimpleName().equalsIgnoreCase(type))
             {

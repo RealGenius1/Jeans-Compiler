@@ -89,7 +89,6 @@ public class Lexer {
 
         for (String key : KEYWORDS.keySet()) {
             if (input.startsWith(key, pos)) {
-                System.out.println(input.substring(pos, pos+key.length()));
                 pos += key.length();
                 return new Token(KEYWORDS.get(key), key);
             }
