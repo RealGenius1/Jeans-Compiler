@@ -14,5 +14,6 @@ public class Jeans {
     System.out.println(x);
      x--;
     }
+    System.out.println("done");
   }
 }

@@ -57,7 +57,11 @@ public class JavaGenerator {
             } else if (n instanceof Assignment as) {
                 out.append("    ").append(as.name).append(" = ").append(as.value).append(";\n");
             } else if (n instanceof Print p) {
-                out.append("    System.out.println(").append(p.value).append(");\n");
+                if(!p.isStr) {
+                    out.append("    System.out.println(").append(p.value).append(");\n");
+                } else {
+                    out.append("    System.out.println(\"").append(p.value).append("\");\n");
+                }
             } else if (n instanceof strDecl sd) {
                 out.append("    String ").append(sd.name).append(" = \"" + sd.val + "\";\n");
             } else if (n instanceof vestDecl vd) {

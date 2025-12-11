@@ -252,15 +252,24 @@ public class Parser {
             eat(Type.ADVERTISE);
             eat(Type.LPAREN);
             String value = look.text;
-            eat(look.type == Type.IDENTIFIER || look.type == Type.INTEGER  || look.type == Type.DOUBLE ? look.type : null);
+            System.out.println(value);
+            boolean isStr = false;
+            if(look.type == Type.IDENTIFIER || look.type == Type.INTEGER  || look.type == Type.DOUBLE)
+                eat(look.type);
+            else if (look.type == Type.STRING){
+                eat(look.type);
+                isStr = true;
+            } else {
+                eat(null);
+            }
             eat(Type.RPAREN);
             eat(Type.SEMICOLON);
-            return new Print(value);
+            return new Print(value, isStr);
         }
 
         if(look.type == Type.SEW){
             eat(Type.SEW);
-            return new Print("");
+            return new Print("", false);
         }
 //        if(look.type == Type.SEMICOLON){
 //            eat(Type.SEMICOLON);
@@ -345,7 +354,12 @@ public class Parser {
             StringBuilder ex = new StringBuilder();
             while(look.type != Type.RPAREN){
                 ex.append(look.text);
-                eat(look.type);
+                try {
+                    eat(look.type);
+                } catch(RuntimeException E){
+                    System.out.println("Catch");
+                    look = lexer.next();
+                }
             }
             eat(Type.RPAREN);
             eat(Type.LEFT_BRACE);

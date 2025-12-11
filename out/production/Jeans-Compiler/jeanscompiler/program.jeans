@@ -8,4 +8,5 @@ catwalk
 	    advertise(x);
 	    zipDown x;
 	}
+	advertise("done");
 everythingMustGo

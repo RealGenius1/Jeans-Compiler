@@ -105,6 +105,10 @@ public class AST {
 
     public static class Print implements Node {
         public final String value;
-        public Print(String v) { this.value = v; }
+        public final boolean isStr;
+        public Print(String v, boolean isStr) {
+            this.value = v;
+            this.isStr = isStr;
+        }
     }
 }
