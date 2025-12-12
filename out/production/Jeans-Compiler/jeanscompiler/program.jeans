@@ -1,0 +1,12 @@
+catwalk
+    vest c = 's';
+    jacket str = "Hello World";
+	jort x = 13;
+	zipUp x;
+	advertise(x);
+	until (x != 1){
+	    advertise(x);
+	    zipDown x;
+	}
+	advertise("done");
+everythingMustGo
