@@ -120,7 +120,7 @@ public class Parser {
             eat(Type.JACKET);                  // consume 'jacket' keyword
             String name = look.text;           // capture identifier name
             eat(Type.IDENTIFIER);              // consume identifier
-            eat(Type.ASSIGNMENT_OPERATOR);     // consume '='
+            eat(Type.ASSIGNMENT_OPERATOR);// consume '='
             String value = look.text;
             eat(Type.STRING);
             eat(Type.SEMICOLON);               // consume string literal
@@ -212,7 +212,7 @@ public class Parser {
             String name = look.text;
             eat(Type.IDENTIFIER);
             eat(Type.ASSIGNMENT_OPERATOR);
-            char c = look.text.charAt(0);
+            String c = look.text;
             eat(Type.CHARACTER);
             eat(Type.SEMICOLON);
             return new vestDuckl(name, c);
@@ -374,6 +374,7 @@ public class Parser {
             eat(Type.LPAREN);
             StringBuilder ex = new StringBuilder();
             while(look.type != Type.RPAREN){
+//                System.out.println(look.text);
                 ex.append(look.text);
                 try {
                     eat(look.type);

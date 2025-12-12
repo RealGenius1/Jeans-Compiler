@@ -31,8 +31,8 @@ public class AST {
 
     public static class vestDuckl implements Node{
         public final String name;
-        public final char val;
-        public vestDuckl(String name, char val){
+        public final String val;
+        public vestDuckl(String name, String val){
             this.name = name;
             this.val = val;
         }

@@ -91,13 +91,12 @@ Map<String, Type> KEYWORDS = Map.ofEntries(
         Map.entry("rightBrace", Type.RIGHT_BRACE),
         Map.entry("lparen", Type.LPAREN),
         Map.entry("rparen", Type.RPAREN),
-
         Map.entry("print", Type.PRINT),
         Map.entry("concat", Type.CONCAT),
         Map.entry("new", Type.NEW),
         Map.entry("character", Type.CHARACTER),
         Map.entry("main", Type.MAIN),
-        Map.entry("closeQuote", Type.CLOSE_QUOTE),
+//        Map.entry("\"", Type.CLOSE_QUOTE),
         Map.entry("modulo", Type.MODULO),
         Map.entry("boolean", Type.BOOLEAN),
 
@@ -200,9 +199,11 @@ Map<String, Type> KEYWORDS = Map.ofEntries(
         if(peek() == 39){
             pos++;
             String c = input.substring(pos, pos+1);
+//            System.out.println("Lexing char = " + c);
+//            System.out.println("\'" + c + "\'");
             pos++;
             pos++;
-            return new Token(Type.CHARACTER, c);
+            return new Token(Type.CHARACTER, "\'" + c + "\'");
         }
 
         // Match simple symbols
