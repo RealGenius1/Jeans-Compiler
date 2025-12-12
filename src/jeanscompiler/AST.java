@@ -12,27 +12,27 @@ public class AST {
         public final List<Node> statements = new ArrayList<>();
     }
 
-    public static class JortDecl implements Node {
+    public static class JortDuckl implements Node {
         public final String name;
         public final int val;
-        public JortDecl(String name, int val) {
+        public JortDuckl(String name, int val) {
             this.name = name;
             this.val = val;
         }
     }
-    public static class JeggingDecl implements Node {
+    public static class JeggingDuckl implements Node {
         public final String name;
         public final double val;
-        public JeggingDecl(String name, double val){
+        public JeggingDuckl(String name, double val){
             this.name = name;
             this.val = val;
         }
     }
 
-    public static class vestDecl implements Node{
+    public static class vestDuckl implements Node{
         public final String name;
         public final char val;
-        public vestDecl(String name, char val){
+        public vestDuckl(String name, char val){
             this.name = name;
             this.val = val;
         }
@@ -47,10 +47,10 @@ public class AST {
         }
     }
 
-    public static class strDecl implements Node{
+    public static class strDuckl implements Node{
         public final String name;
         public final String val;
-        public strDecl(String name, String val){
+        public strDuckl(String name, String val){
             this.name = name;
             this.val = val;
         }

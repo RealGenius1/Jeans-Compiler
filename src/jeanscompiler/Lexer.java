@@ -50,8 +50,8 @@ Map<String, Type> KEYWORDS = Map.ofEntries(
         // Language keywords
         Map.entry("if", Type.IF),
         Map.entry("else", Type.ELSE),
-        Map.entry("lessThan", Type.LESS_THAN),
-        Map.entry("greaterThan", Type.GREATER_THAN),
+        Map.entry("<", Type.LESS_THAN),
+        Map.entry(">", Type.GREATER_THAN),
         Map.entry("list", Type.LIST),
         Map.entry("denim", Type.DENIM),
         Map.entry("wear", Type.WEAR),

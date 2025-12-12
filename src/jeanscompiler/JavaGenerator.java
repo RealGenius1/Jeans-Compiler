@@ -4,10 +4,8 @@ import jeanscompiler.AST.*;
 
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Path;
 
 public class JavaGenerator {
 
@@ -52,7 +50,7 @@ public class JavaGenerator {
 
     public static void build(Program program, StringBuilder out) {
         for (AST.Node n : program.statements) {
-            if (n instanceof JortDecl vd) {
+            if (n instanceof JortDuckl vd) {
                 out.append("    int ").append(vd.name).append(" = " + vd.val + ";\n");
             } else if (n instanceof Assignment as) {
                 out.append("    ").append(as.name).append(" = ").append(as.value).append(";\n");
@@ -62,11 +60,11 @@ public class JavaGenerator {
                 } else {
                     out.append("    System.out.println(\"").append(p.value).append("\");\n");
                 }
-            } else if (n instanceof strDecl sd) {
+            } else if (n instanceof strDuckl sd) {
                 out.append("    String ").append(sd.name).append(" = \"" + sd.val + "\";\n");
-            } else if (n instanceof vestDecl vd) {
+            } else if (n instanceof vestDuckl vd) {
                 out.append("    char ").append(vd.name).append(" = '" + vd.val + "';\n");
-            } else if (n instanceof JeggingDecl jd) {
+            } else if (n instanceof JeggingDuckl jd) {
                 out.append("    double ").append(jd.name).append(" = " + jd.val + ";\n");
             } else if (n instanceof hatDuckl vd) {
                 out.append("    boolean ").append(vd.name).append(" = " + vd.val + ";\n");
