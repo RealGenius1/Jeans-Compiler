@@ -14,6 +14,9 @@ public class Jeans {
     System.out.println(x);
      x--;
     }
+    if (x==1) {
+    System.out.println("IN THE IF!");
+    }
     System.out.println("done");
   }
 }

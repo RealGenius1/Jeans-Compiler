@@ -80,6 +80,10 @@ public class JavaGenerator {
                 out.append("    while (" + wd.ex + ") {\n");
                 build(wd.block, out);
                 out.append("    }\n");
+            } else if (n instanceof ifDuckl id){
+                out.append("    if (" + id.ex + ") {\n");
+                build(id.block, out);
+                out.append("    }\n");
             }
         }
 

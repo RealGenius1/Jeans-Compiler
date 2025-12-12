@@ -94,6 +94,16 @@ public class AST {
         }
     }
 
+    public static class ifDuckl implements Node{
+        public final String ex;
+        public final Program block;
+        public ifDuckl(String ex, Program block){
+            this.ex = ex;
+            this.block = block;
+        }
+    }
+
+
     public static class Assignment implements Node {
         public final String name;
         public final String value;

@@ -8,5 +8,8 @@ catwalk
 	    advertise(x);
 	    zipDown x;
 	}
+	if(x==1){
+	advertise("IN THE IF!");
+	}
 	advertise("done");
 everythingMustGo

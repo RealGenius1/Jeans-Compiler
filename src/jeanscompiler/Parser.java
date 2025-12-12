@@ -369,6 +369,28 @@ public class Parser {
             eat(Type.RIGHT_BRACE);
             return new whileDuckl(ex.toString(), block);
         }
+        if(look.type == Type.IF){
+            eat(Type.IF);
+            eat(Type.LPAREN);
+            StringBuilder ex = new StringBuilder();
+            while(look.type != Type.RPAREN){
+                ex.append(look.text);
+                try {
+                    eat(look.type);
+                } catch(RuntimeException E){
+                    System.out.println("Catch");
+                    look = lexer.next();
+                }
+            }
+            eat(Type.RPAREN);
+            eat(Type.LEFT_BRACE);
+            Program block = new Program();
+            while(look.type != Type.RIGHT_BRACE){
+                block.statements.add(statement());
+            }
+            eat(Type.RIGHT_BRACE);
+            return new ifDuckl(ex.toString(), block);
+        }
 
 
         throw new RuntimeException("Unknown statement start: " + look);
