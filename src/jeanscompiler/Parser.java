@@ -251,7 +251,7 @@ public class Parser {
             eat(Type.ADVERTISE);
             eat(Type.LPAREN);
             String value = look.text;
-            System.out.println(value);
+//            System.out.println(value);
             boolean isStr = false;
             if(look.type == Type.IDENTIFIER || look.type == Type.INTEGER  || look.type == Type.DOUBLE)
                 eat(look.type);
@@ -391,6 +391,18 @@ public class Parser {
             eat(Type.RIGHT_BRACE);
             return new ifDuckl(ex.toString(), block);
         }
+        if(look.type == Type.ELSE){
+            eat(Type.ELSE);
+            eat(Type.LEFT_BRACE);
+            Program block = new Program();
+            while(look.type != Type.RIGHT_BRACE){
+                block.statements.add(statement());
+            }
+            eat(Type.RIGHT_BRACE);
+            return new elseDuckl(block);
+        }
+
+
 
 
         throw new RuntimeException("Unknown statement start: " + look);

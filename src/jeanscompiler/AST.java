@@ -103,6 +103,13 @@ public class AST {
         }
     }
 
+    public static class elseDuckl implements Node {
+        public final Program block;
+        public elseDuckl(Program block){
+            this.block = block;
+        }
+    }
+
 
     public static class Assignment implements Node {
         public final String name;

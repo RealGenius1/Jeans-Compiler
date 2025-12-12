@@ -84,6 +84,10 @@ public class JavaGenerator {
                 out.append("    if (" + id.ex + ") {\n");
                 build(id.block, out);
                 out.append("    }\n");
+            } else if (n instanceof elseDuckl ed){
+                out.append("    else {\n");
+                build(ed.block, out);
+                out.append("    }\n");
             }
         }
 
