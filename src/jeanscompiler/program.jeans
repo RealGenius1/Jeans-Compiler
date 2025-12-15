@@ -20,4 +20,6 @@ catwalk
 	advertise("IN THE ELSE!");
 	}
 	advertise("done");
+	advertise("File pathing test");
+	advertise("File pathing test 2");
 everythingMustGo

@@ -28,7 +28,7 @@ public class JavaGenerator {
         out.append("\t}\n}\n");
 //        File file = new File("Jeans.java");
         //TODO: See if we can change the path to be flexible
-        FileWriter writer = new FileWriter("C:\\Users\\sptho\\Downloads\\Github\\Jeans-Compiler\\src\\jeanscompiler\\Jeans.java");
+        FileWriter writer = new FileWriter("..\\Jeans-Compiler\\src\\jeanscompiler\\Jeans.java");
         writer.write(out.toString());
         writer.close();
 

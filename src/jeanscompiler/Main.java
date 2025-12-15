@@ -13,7 +13,7 @@ import javax.tools.ToolProvider;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        String source = new String(Files.readAllBytes(Paths.get("C:\\Users\\sptho\\Downloads\\Github\\Jeans-Compiler\\src\\jeanscompiler\\program.jeans")));
+        String source = new String(Files.readAllBytes(Paths.get("..\\Jeans-Compiler\\src\\jeanscompiler\\program.jeans")));
 
         // 2️⃣ Lex the source
         Lexer lexer = new Lexer(source);
