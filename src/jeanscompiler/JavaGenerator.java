@@ -7,8 +7,13 @@ import javax.tools.ToolProvider;
 import java.io.FileWriter;
 import java.io.IOException;
 
+
+
 public class JavaGenerator {
 
+/**
+ * Generates Java code from the given Program AST and compiles/runs it.
+*/
     public static String generate(Program program) throws IOException, InterruptedException {
         StringBuilder out = new StringBuilder();
 
@@ -22,6 +27,7 @@ public class JavaGenerator {
 
         out.append("\t}\n}\n");
 //        File file = new File("Jeans.java");
+        //TODO: See if we can change the path to be flexible
         FileWriter writer = new FileWriter("C:\\Users\\sptho\\Downloads\\Github\\Jeans-Compiler\\src\\jeanscompiler\\Jeans.java");
         writer.write(out.toString());
         writer.close();
@@ -48,6 +54,9 @@ public class JavaGenerator {
         return out.toString();
     }
 
+/**
+ * Builds the Java code from the AST nodes.
+ */
     public static void build(Program program, StringBuilder out, String indent) {
         for (AST.Node n : program.statements) {
             if (n instanceof JortDuckl vd) {

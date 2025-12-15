@@ -11,7 +11,10 @@ public class Parser {
         this.lexer = lexer;
         this.look = lexer.next();
     }
-
+/**
+ * Moves through the given code if the text matches the expected type.
+ * @param t The expected token type.
+ */
     private void eat(Type t) {
         if (look.type != t) {
             System.out.println(look.text);
