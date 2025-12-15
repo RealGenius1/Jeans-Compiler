@@ -14,11 +14,14 @@ public class Jeans {
 			System.out.println(x);
 			x--;
 		}
-		if (x==1) {
+		if (x==2) {
 			System.out.println("IN THE IF!");
 			if (c=='s') {
 				System.out.println("IM NESTED!");
 			}
+		}
+		else if (c=='s') {
+			System.out.println("Im in the else if!");
 		}
 		else {
 			System.out.println("IN THE ELSE!");

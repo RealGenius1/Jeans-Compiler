@@ -97,6 +97,10 @@ public class JavaGenerator {
                 out.append(indent + "else {\n");
                 build(ed.block, out, indent+"\t");
                 out.append(indent + "}\n");
+            } else if (n instanceof elifDuckl ed){
+                out.append(indent + "else if (" + ed.ex + ") {\n");
+                build(ed.block, out, indent+"\t");
+                out.append(indent + "}\n");
             }
         }
 

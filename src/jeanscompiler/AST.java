@@ -103,6 +103,15 @@ public class AST {
         }
     }
 
+    public static class elifDuckl implements Node{
+        public final String ex;
+        public final Program block;
+        public elifDuckl(String ex, Program block){
+            this.ex = ex;
+            this.block = block;
+        }
+    }
+
     public static class elseDuckl implements Node {
         public final Program block;
         public elseDuckl(Program block){

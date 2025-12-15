@@ -405,6 +405,29 @@ public class Parser {
             eat(Type.RIGHT_BRACE);
             return new elseDuckl(block);
         }
+        if(look.type == Type.ELIF){
+            eat(Type.ELIF);
+            eat(Type.LPAREN);
+            StringBuilder ex = new StringBuilder();
+            while(look.type != Type.RPAREN){
+//                System.out.println(look.text);
+                ex.append(look.text);
+                try {
+                    eat(look.type);
+                } catch(RuntimeException E){
+                    System.out.println("Catch");
+                    look = lexer.next();
+                }
+            }
+            eat(Type.RPAREN);
+            eat(Type.LEFT_BRACE);
+            Program block = new Program();
+            while(look.type != Type.RIGHT_BRACE){
+                block.statements.add(statement());
+            }
+            eat(Type.RIGHT_BRACE);
+            return new elifDuckl(ex.toString(), block);
+        }
 
 
 

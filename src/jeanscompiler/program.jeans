@@ -8,11 +8,13 @@ catwalk
 	    advertise(x);
 	    zipDown x;
 	}
-	if(x==1){
+	if(x==2){
 	advertise("IN THE IF!");
 	if(c == 's'){
 	advertise("IM NESTED!");
 	}
+	} elif(c == 's'){
+	advertise("Im in the else if!");
 	}
 	else {
 	advertise("IN THE ELSE!");
