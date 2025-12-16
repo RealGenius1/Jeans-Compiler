@@ -77,6 +77,7 @@ Map<String, Type> KEYWORDS = Map.ofEntries(
         Map.entry("or", Type.OR),
         Map.entry("!=", Type.NEQUAL),
         Map.entry("for", Type.FOR),
+        Map.entry(",", Type.COMMA),
         Map.entry("operaticJeanPhrases", Type.OPERATIC_JEAN_PHRASES),
 
         // Misc token types
