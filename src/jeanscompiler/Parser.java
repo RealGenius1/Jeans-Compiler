@@ -501,7 +501,7 @@ public class Parser {
     private String translate(String s){
         return switch (s) {
             case "jort" -> "int";
-            case "jeggings" -> "double";
+            case "jegging" -> "double";
             case "jacket" -> "String";
             case "vest" -> "char";
             case "hat" -> "boolean";
