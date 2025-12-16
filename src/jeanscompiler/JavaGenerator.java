@@ -78,6 +78,10 @@ public class JavaGenerator {
                 out.append(indent + "}\n");
             } else if (n instanceof pocketDuckl pd){
                 out.append(indent + pd.type + "[] " + pd.name + " = " + pd.ex + ";\n");
+            } else if (n instanceof shoveDuckl sd){
+                out.append(indent + sd.name + "[" + sd.ind + "] = " + sd.val + ";\n");
+            } else if (n instanceof rummageDuckl rd){
+                out.append(indent + rd.name + "[" + rd.ind + "]");
             }
         }
 

@@ -457,6 +457,29 @@ public class Parser {
             }
             return null;
         }
+        if(look.type == Type.SHOVE){
+            eat(Type.SHOVE);
+            String s = look.text;
+            eat(look.type);
+            eat(Type.IN);
+            String name = look.text;
+            eat(Type.IDENTIFIER);
+            eat(Type.AT);
+            int x = Integer.parseInt(look.text);
+            eat(Type.INTEGER);
+            eat(Type.SEMICOLON);
+            return new shoveDuckl(name, s, x);
+        }
+        if(look.type == Type.RUMMAGE){
+            eat(Type.RUMMAGE);
+            String name = look.text;
+            eat(Type.IDENTIFIER);
+            eat(Type.AT);
+            int x = Integer.parseInt(look.text);
+            eat(Type.INTEGER);
+            eat(Type.SEMICOLON);
+            return new rummageDuckl(name, x);
+        }
 
 
 

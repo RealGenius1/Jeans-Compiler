@@ -130,6 +130,26 @@ public class AST {
         }
     }
 
+    public static class shoveDuckl implements Node {
+        public final String name;
+        public final String val;
+        public final int ind;
+        public shoveDuckl(String name, String val, int ind){
+            this.name = name;
+            this.val = val;
+            this.ind = ind;
+        }
+    }
+
+    public static class rummageDuckl implements Node {
+        public final String name;
+        public final int ind;
+        public rummageDuckl(String name, int ind){
+            this.name = name;
+            this.ind = ind;
+        }
+    }
+
 
     public static class Assignment implements Node {
         public final String name;
