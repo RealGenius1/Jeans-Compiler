@@ -254,15 +254,27 @@ public class Parser {
             eat(Type.ADVERTISE);
             eat(Type.LPAREN);
             String value = look.text;
-//            System.out.println(value);
-            boolean isStr = false;
-            if(look.type == Type.IDENTIFIER || look.type == Type.INTEGER  || look.type == Type.DOUBLE)
-                eat(look.type);
-            else if (look.type == Type.STRING){
-                eat(look.type);
-                isStr = true;
+            boolean isStr;
+            if(look.type == Type.RUMMAGE){
+                eat(Type.RUMMAGE);
+                String name = look.text;
+                eat(Type.IDENTIFIER);
+                eat(Type.AT);
+                int x = Integer.parseInt(look.text);
+                eat(Type.INTEGER);
+                isStr = false;
+                value = name + "[" + x + "]";
             } else {
-                eat(null);
+//            System.out.println(value);
+                isStr = false;
+                if (look.type == Type.IDENTIFIER || look.type == Type.INTEGER || look.type == Type.DOUBLE)
+                    eat(look.type);
+                else if (look.type == Type.STRING) {
+                    eat(look.type);
+                    isStr = true;
+                } else {
+                    eat(null);
+                }
             }
             eat(Type.RPAREN);
             eat(Type.SEMICOLON);
