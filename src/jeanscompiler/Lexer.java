@@ -42,7 +42,6 @@ Map<String, Type> KEYWORDS = Map.ofEntries(
         Map.entry("borrow", Type.BORROW),
         Map.entry("order", Type.ORDER),
         Map.entry("listing", Type.LISTING),
-        Map.entry("pocket", Type.POCKET),
         Map.entry("in", Type.IN),
         Map.entry("holds", Type.HOLDS),
         Map.entry("space", Type.SPACE),
