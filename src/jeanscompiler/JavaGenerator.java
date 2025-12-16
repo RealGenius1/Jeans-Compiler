@@ -76,6 +76,8 @@ public class JavaGenerator {
                 out.append(indent + "else if (" + ed.ex + ") {\n");
                 build(ed.block, out, indent+"\t");
                 out.append(indent + "}\n");
+            } else if (n instanceof pocketDuckl pd){
+                out.append(indent + pd.type + "[] " + pd.name + " = " + pd.ex + ";\n");
             }
         }
 

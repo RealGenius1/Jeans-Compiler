@@ -428,10 +428,49 @@ public class Parser {
             eat(Type.RIGHT_BRACE);
             return new elifDuckl(ex.toString(), block);
         }
+        if(look.type == Type.POCKET){
+            eat(Type.POCKET);
+            eat(Type.IN);
+            String type = translate(look.text);
+            eat(look.type);
+            String ID = look.text;
+            eat(Type.IDENTIFIER);
+            StringBuilder sb = new StringBuilder();
+            if(look.type == Type.HOLDS){
+                eat(Type.HOLDS);
+                while(look.type!=Type.RIGHT_BRACE){
+                    sb.append(look.text);
+                    eat(look.type);
+                }
+                sb.append("}");
+                eat(Type.RIGHT_BRACE);
+                eat(Type.SEMICOLON);
+                return new pocketDuckl(ID, type, sb.toString());
+            }
+            if(look.type == Type.SPACE){
+                eat(Type.SPACE);
+                eat(Type.FOR);
+                String x = "new " + type + "[" + look.text + "]";
+                eat(look.type);
+                eat(Type.SEMICOLON);
+                return new pocketDuckl(ID, type, x);
+            }
+            return null;
+        }
 
 
 
 
         throw new RuntimeException("Unknown statement start: " + look);
+    }
+    private String translate(String s){
+        return switch (s) {
+            case "jort" -> "int";
+            case "jeggings" -> "double";
+            case "jacket" -> "String";
+            case "vest" -> "char";
+            case "hat" -> "boolean";
+            default -> "";
+        };
     }
 }

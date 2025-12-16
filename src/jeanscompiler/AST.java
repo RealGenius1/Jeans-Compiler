@@ -119,6 +119,17 @@ public class AST {
         }
     }
 
+    public static class pocketDuckl implements Node {
+        public final String name;
+        public final String type;
+        public final String ex;
+        public pocketDuckl(String name, String type, String ex){
+            this.name = name;
+            this.type = type;
+            this.ex = ex;
+        }
+    }
+
 
     public static class Assignment implements Node {
         public final String name;

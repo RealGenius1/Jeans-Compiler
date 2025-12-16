@@ -42,6 +42,13 @@ Map<String, Type> KEYWORDS = Map.ofEntries(
         Map.entry("borrow", Type.BORROW),
         Map.entry("order", Type.ORDER),
         Map.entry("listing", Type.LISTING),
+        Map.entry("pocket", Type.POCKET),
+        Map.entry("in", Type.IN),
+        Map.entry("holds", Type.HOLDS),
+        Map.entry("space", Type.SPACE),
+        Map.entry("shove", Type.SHOVE),
+        Map.entry("rummage", Type.RUMMAGE),
+        Map.entry("at", Type.AT),
 
         // Boolean literals
         Map.entry("true", Type.TRUE),
